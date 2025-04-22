@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+:root {
+  --color-primary: #68ddcf;
+  --color-secondary: #3c5656;
+  --color-lightgray: #E3E8E8;
+}
+
+@theme static {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-lightgray: var(--color-lightgrey);
+}
