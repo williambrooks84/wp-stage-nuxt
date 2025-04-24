@@ -8,7 +8,7 @@
                 </svg>
             </a>
 
-            <span id="slogan" class="mx-auto hidden sm:inline-flex xl:hidden">Citation</span>
+            <span id="slogan" class="mx-auto hidden sm:inline-flex xl:hidden">Impossible n'est pas possible</span>
 
             <!-- Mobile menu button (optional if you want responsiveness later) -->
             <button class="xl:hidden text-gray-600 focus:outline-none" @click="isMobileMenuOpen = !isMobileMenuOpen">
@@ -19,22 +19,31 @@
             <div class="hidden xl:flex space-x-8 items-center justify-center flex-1">
                 <NavLink v-for="link in navLinks" :href="link.href" :name="link.name" />
             </div>
-            <Button class="hidden xl:flex" :padding="'px-4 py-3'" color="bg-secondary" textSize="text-base"
+            <Button @click="showModal = true" class="hidden xl:flex" :padding="'px-4 py-3'" color="bg-secondary" textSize="text-base"
                 label="Contact" icon="/assets/icons/send.svg" />
         </div>
     </nav>
     <!-- Mobile nav links -->
     <div v-if="isMobileMenuOpen" class="xl:hidden flex flex-col px-4 pb-4 gap-2 space-y-2 bg-white">
         <NavLink v-for="link in navLinks" :key="link.name" :href="link.href" :name="link.name" />
-        <Button :padding="'px-4 py-3'" color="bg-secondary" textSize="text-base" label="Contact"
+        <Button @click="showModal = true" :padding="'px-4 py-3'" color="bg-secondary" textSize="text-base" label="Contact"
             icon="/assets/icons/send.svg" class="w-fit" />
     </div>
+    <ContactModal :show="showModal" @close="showModal = false" />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import NavLink from './NavLink.vue';
 import Button from './Button.vue';
+import ContactModal from './ContactModal.vue';  
+import { defineProps } from 'vue';
+
+defineProps({
+    show: Boolean
+});
+
+const showModal = ref(false)
 
 const navLinks = [
     { name: 'Accueil', href: '/' },

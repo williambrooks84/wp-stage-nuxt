@@ -7,27 +7,27 @@
     <div>
       <Hero />
     </div>
-    <ul v-if="posts">
-      <li v-for="post in posts" :key="post.id">
-        <h2 class="text-xl font-semibold" v-html="post.title.rendered" />
-        <div class="text-gray-600" v-html="post.excerpt.rendered" />
-      </li>
-    </ul>
-    <p v-else>Chargement en cours...</p>
+    <div>
+      <Articles/>
+    </div>
+    <div>
+      <PortfolioCard v-for="item in portfolios" :key="item.id" :portfolio="item" />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Hero from '~/components/Hero.vue'
+import Articles from '~/components/Articles.vue'
+import PortfolioCard from '~/components/PortfolioCard.vue'
 
-interface Post {
+interface Portfolio {
   id: number;
-  title: { rendered: string };
-  excerpt: { rendered: string };
+  // Add other properties of the portfolio object if needed
 }
 
-const { data: posts } = await useFetch<Post[]>('http://wp-stage.local/wp-json/wp/v2/posts')
+const { data: portfolios } = await useFetch<Portfolio[]>('http://wp-stage.local/wp-json/wp/v2/portfolio?_embed')
 </script>
 
 <style scoped>

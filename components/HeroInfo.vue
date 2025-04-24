@@ -2,7 +2,7 @@
     <div class="flex items-center space-x-2">
         <component :is="icon" class="w-5 h-5 text-light" />
         <span class="font-bold">{{ label }} :</span>
-        <a class="text-light hover:underline" :href="link" target="_blank">{{ Name }}</a>
+        <a class="text-primary hover:underline" :href="link" target="_blank">{{ Name }}</a>
     </div>
 </template>
 

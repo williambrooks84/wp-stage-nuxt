@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col-reverse lg:flex-row items-center justify-center">
+    <div class="flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between mb-8">
         <!-- Left -->
         <div class="w-full lg:w-7/12 text-center lg:text-left">
             <h1 class="uppercase text-3xl font-bold">Rapport de stage intéractif</h1>
